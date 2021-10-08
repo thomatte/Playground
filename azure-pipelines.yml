@@ -10,9 +10,9 @@ pool:
   vmImage: windows-latest
 
 stages:
-- stage: Playground Stage
+- stage: Playground_Stage
   jobs:
-  - job: Playground
+  - job: Playground_Job
     steps:
     - task: PowerShell@2
       displayName: 'Run a one-line script'
@@ -24,6 +24,6 @@ stages:
       displayName: 'Run a multi-line script'
       inputs:
         targetType: inline
-        script:|
+        script:
           Write-Host 'Add other tasks to build, test, and deploy your project.'
           Write-Host 'See https://aka.ms/yaml'
