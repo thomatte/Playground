@@ -22,7 +22,7 @@ stages:
         targetType: inline
         script: 
           Write-Host "Hello, world!"
-          $var = Get-ChildItem -Path "$(Build.SourcesDirectory)\OnlineHelp" -Directory | Select-Object Name | foreach {$_.Name})
+          $var = Get-ChildItem -Path "$(Build.SourcesDirectory)\OnlineHelp" -Directory | Select-Object Name | foreach {$_.Name}
           Write-Host "##vso[task.setvariable variable=test](Get-Variable var)'
 
     - task: PowerShell@2
