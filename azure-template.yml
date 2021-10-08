@@ -8,4 +8,4 @@ steps:
     displayName: HelloWorld
     inputs:
        targetType: inline
-       script: Write-Host "Hello $(text)"
+       script: Write-Host "Hello ${{ text }}"
