@@ -1,3 +1,4 @@
+
 # Starter pipeline
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
@@ -16,14 +17,17 @@ stages:
     steps:
     - task: PowerShell@2
       displayName: 'Run a one-line script'
+      name: Step1
       inputs:
         targetType: inline
-        script: Write-Host "Hello, world!"
+        script: 
+          Write-Host "Hello, world!"
+          Write-Host "##vso[task.setvariable variable=test]hello"
 
     - task: PowerShell@2
       displayName: 'Run a multi-line script'
+      name: Step2
       inputs:
         targetType: inline
         script:
-          Write-Host 'Add other tasks to build, test, and deploy your project.'
-          Write-Host 'See https://aka.ms/yaml'
+          Write-Host $(test)
