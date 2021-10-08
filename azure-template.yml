@@ -1,0 +1,6 @@
+parameters:
+  text
+
+steps:
+  - script:
+      Write-Host "Hello $(text)"
