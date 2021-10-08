@@ -9,11 +9,21 @@ trigger:
 pool:
   vmImage: windows-latest
 
-steps:
-- script: Write-Host "Hello, world!"
-  displayName: 'Run a one-line script'
+stages:
+- stage: Playground Stage
+  jobs:
+  - job: Playground
+    steps:
+    - task: PowerShell@2
+      displayName: 'Run a one-line script'
+      inputs:
+        targetType: inline
+        script: Write-Host "Hello, world!"
 
-- script: |
-    Write-Host "Add other tasks to build, test, and deploy your project."
-    Write-Host "See https://aka.ms/yaml"
-  displayName: 'Run a multi-line script'
+    - task: PowerShell@2
+      displayName: 'Run a multi-line script'
+      inputs:
+        targetType: inline
+        script:|
+          Write-Host 'Add other tasks to build, test, and deploy your project.'
+          Write-Host 'See https://aka.ms/yaml'
