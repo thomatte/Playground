@@ -4,5 +4,8 @@ parameters:
     default: false
 
 steps:
-  - script:
-      Write-Host "Hello $(text)"
+  - task: PowerShell@2
+    displayName: HelloWorld
+    inputs:
+       targetType: inline
+       script: Write-Host "Hello $(text)"
