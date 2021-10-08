@@ -8,6 +8,9 @@
 trigger:
 - master
 
+variables:
+  name: content
+
 pool:
   vmImage: windows-latest
 
@@ -22,9 +25,7 @@ stages:
       inputs:
         targetType: inline
         script: 
-          Write-Host "Hello, world!"
-          $var = "Hello World"
-          Write-Host '##vso[task.setvariable variable=test]${var}'
+          $(content) = "Hello World"
 
     - task: PowerShell@2
       displayName: 'Run a multi-line script'
@@ -32,4 +33,4 @@ stages:
       inputs:
         targetType: inline
         script:
-          Write-Host $(test)
+          Write-Host $(content)
