@@ -22,7 +22,8 @@ stages:
         targetType: inline
         script: 
           Write-Host "Hello, world!"
-          Write-Host "##vso[task.setvariable variable=test]hello"
+          $text = "Hello World!"
+          Write-Host "##vso[task.setvariable variable=test]$text"
 
     - task: PowerShell@2
       displayName: 'Run a multi-line script'
