@@ -1,5 +1,7 @@
 parameters:
-  text
+  - name: text
+    type: string
+    default: false
 
 steps:
   - script:
