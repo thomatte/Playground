@@ -23,7 +23,7 @@ stages:
         script: 
           Write-Host "Hello, world!"
           $text = "Hello World!"
-          Write-Host "##vso[task.setvariable variable=test]$text"
+          Write-Host "##vso[task.setvariable variable=test]$(text)"
 
     - task: PowerShell@2
       displayName: 'Run a multi-line script'
