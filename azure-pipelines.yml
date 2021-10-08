@@ -19,18 +19,6 @@ stages:
   jobs:
   - job: Playground_Job
     steps:
-    - task: PowerShell@2
-      displayName: 'Run a one-line script'
-      name: Step1
-      inputs:
-        targetType: inline
-        script: 
-          $(content) = "Hello World"
-
-    - task: PowerShell@2
-      displayName: 'Run a multi-line script'
-      name: Step2
-      inputs:
-        targetType: inline
-        script:
-          Write-Host $(content)
+    - template: azure-template.yml
+      parameters:
+        text: "Thomas"
