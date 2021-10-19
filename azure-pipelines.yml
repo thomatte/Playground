@@ -20,11 +20,9 @@ stages:
   - job: Playground_Job
     steps:
     - checkout: self
-    - task: CmdLine@2
-      inputs:
-        script:
-          echo "Structure of work folder of this pipeline:"
-          tree $(Agent.WorkFolder)\1 /f
+
+    - powershell: Get-ChildItem -Path '$(Agent.WorkFolder)\1' -recurse
+
     - task: CopyFiles@2
       displayName: Copying health folder
       inputs:
