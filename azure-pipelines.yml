@@ -25,10 +25,23 @@ stages:
 
     - powershell: Get-ChildItem -Path '$(Agent.WorkFolder)\1' -recurse
 
+    - task: replacetokens@4
+      inputs:
+        targetFiles: 'health/index.html'
+        encoding: 'auto'
+        tokenPattern: 'default'
+        writeBOM: true
+        actionOnMissing: 'warn'
+        keepToken: false
+        actionOnNoFiles: 'continue'
+        enableTransforms: false
+        useLegacyPattern: false
+        enableTelemetry: true
+
     - task: CopyFiles@2
       displayName: Copying health folder
       inputs:
-        sourceFolder: '$(Build.SourcesDirectory)\thomatte.Playground\health'
+        sourceFolder: '$(Build.SourcesDirectory)\health'
         contents: '**'
         targetFolder: '$(Build.StagingDirectory)\health'  
 
