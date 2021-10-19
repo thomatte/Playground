@@ -18,6 +18,8 @@ stages:
 - stage: Playground_Stage
   jobs:
   - job: Playground_Job
+    workspace: 
+      clean: all
     steps:
     - checkout: self
 
