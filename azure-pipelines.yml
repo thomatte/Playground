@@ -6,7 +6,7 @@
 # $var = Get-ChildItem -Path "$(Build.SourcesDirectory)\OnlineHelp" -Directory | Select-Object Name | foreach {$_.Name}
 
 trigger:
-- master
+- none
 
 variables:
   name: content
@@ -19,6 +19,17 @@ stages:
   jobs:
   - job: Playground_Job
     steps:
-    - template: azure-template.yml
-      parameters:
-        text: "Thomas"
+    - task: ArchiveFiles@2
+      displayName: Archive Build as ZIP
+      inputs:
+        rootFolderOrFile: '$(Build.StagingDirectory)'
+        includeRootFolder: false
+        archiveType: 'zip'
+        archiveFile: '$(Build.ArtifactStagingDirectory)\Build.zip'
+        replaceExistingArchive: true        
+      
+    - task: PublishPipelineArtifact@1
+      displayName: Publish Build Artifact
+      inputs:
+        targetPath: '$(Build.ArtifactStagingDirectory)\Build.zip'
+        ArtifactName: 'Build'
