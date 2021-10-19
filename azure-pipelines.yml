@@ -19,6 +19,7 @@ stages:
   jobs:
   - job: Playground_Job
     steps:
+    - checkout: self
     - task: CopyFiles@2
       displayName: Copying health folder
       inputs:
