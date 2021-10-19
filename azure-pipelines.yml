@@ -20,6 +20,11 @@ stages:
   - job: Playground_Job
     steps:
     - checkout: self
+    - task: CmdLine@2
+      inputs:
+        script:
+          echo "Structure of work folder of this pipeline:"
+          tree $(Agent.WorkFolder)\1 /f
     - task: CopyFiles@2
       displayName: Copying health folder
       inputs:
