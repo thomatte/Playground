@@ -19,6 +19,13 @@ stages:
   jobs:
   - job: Playground_Job
     steps:
+    - task: CopyFiles@2
+      displayName: Copying health folder
+      inputs:
+        sourceFolder: '$(Build.SourcesDirectory)\health'
+        contents: '**'
+        targetFolder: '$(Build.StagingDirectory)\health'  
+
     - task: ArchiveFiles@2
       displayName: Archive Build as ZIP
       inputs:
