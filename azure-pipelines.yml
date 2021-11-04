@@ -23,6 +23,8 @@ stages:
     steps:
     - checkout: self
 
+    - powershell: Write-Host $(Build.SourceBranchName)
+
     - powershell: Get-ChildItem -Path '$(Agent.WorkFolder)\1' -recurse
 
     - task: replacetokens@4
