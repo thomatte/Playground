@@ -6,7 +6,7 @@
 # $var = Get-ChildItem -Path "$(Build.SourcesDirectory)\OnlineHelp" -Directory | Select-Object Name | foreach {$_.Name}
 
 trigger:
-- none
+- master
 
 variables:
   - name: content
