@@ -9,7 +9,9 @@ trigger:
 - none
 
 variables:
-  name: content
+  - name: content
+  - name: BranchName
+    value: $(Build.SourceBranchName)
 
 pool:
   vmImage: windows-latest
@@ -23,7 +25,7 @@ stages:
     steps:
     - checkout: self
 
-    - powershell: Write-Host $(Build.SourceBranchName)
+    - powershell: Write-Host $(BranchName)
 
     - powershell: Get-ChildItem -Path '$(Agent.WorkFolder)\1' -recurse
 
