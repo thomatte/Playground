@@ -25,6 +25,18 @@ stages:
     steps:
     - checkout: self
 
+    - task: PowerShell@2
+      name: Changes
+      inputs:
+        targetType: 'inline'
+        script: |
+          $changedFilesOne = git diff-tree --no-commit-id --name-only -r $env:BUILD_SOURCEVERSION
+          $changedFilesTwo = git diff origin/master --name-only
+
+          Write-Host "Build Sourceversion: $env:BUILD_SOURCEVERSION"
+          Write-Host "One: $changedFilesOne"
+          Write-Host "Two: $changedFilesTwo"
+
     - powershell: Write-Host $(BranchName)
 
     - powershell: Get-ChildItem -Path '$(Agent.WorkFolder)\1' -recurse
